@@ -209,7 +209,7 @@ def pay():
         amount=90.90,
         currency=CURRENCY,
         pod=socket.gethostname(),
-        version=V3
+        version=APP_VERSION
     )
 
 

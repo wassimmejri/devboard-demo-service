@@ -206,7 +206,7 @@ def pay():
     return jsonify(
         service=SERVICE_NAME,
         action="payment_processed",
-        amount=50.90,
+        amount=90.90,
         currency=CURRENCY,
         pod=socket.gethostname(),
         version=V3

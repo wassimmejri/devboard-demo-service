@@ -9,7 +9,7 @@ app = Flask(__name__)
 # ── Configuration injectée par DevBoard ──
 SERVICE_NAME = os.getenv("SERVICE_NAME", "demo-service")
 SERVICE_ROLE = os.getenv("SERVICE_ROLE", "generic")
-CURRENCY     = os.getenv("CURRENCY", "EUR")
+CURRENCY     = os.getenv("CURRENCY", "USD")
 API_KEY      = os.getenv("PAYMENT_API_KEY", "")
 DEPENDS_ON   = [d.strip() for d in os.getenv("DEPENDS_ON", "").split(",") if d.strip()]
 DEP_PORT     = os.getenv("DEP_PORT", "5000")

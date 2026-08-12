@@ -238,24 +238,7 @@ def load():
         sum(i * i for i in range(5000))
     return jsonify(service=SERVICE_NAME, pod=socket.gethostname(), burned=seconds)
 
-# ══════════════════════════════════════════════════════════════
-# DÉMONSTRATION — dégradation volontaire
-# ══════════════════════════════════════════════════════════════
-# Le service démarre normalement et satisfait sa sonde de
-# disponibilité, puis s'arrête au bout de FAULT_AFTER secondes.
-# Simule une régression qui passe le pipeline mais dégrade le
-# service en production. À retirer après la démonstration.
-FAULT_AFTER = int(os.getenv("FAULT_AFTER", "0"))
 
-if FAULT_AFTER > 0:
-    import threading
-
-    def _fault():
-        time.sleep(FAULT_AFTER)
-        print(f"[DEMO] Arrêt volontaire après {FAULT_AFTER}s", flush=True)
-        os._exit(1)
-
-    threading.Thread(target=_fault, daemon=True).start()
 
 
 if __name__ == "__main__":

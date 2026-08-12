@@ -239,7 +239,15 @@ def load():
     return jsonify(service=SERVICE_NAME, pod=socket.gethostname(), burned=seconds)
 
 
+# DÉMO — à retirer après
+import threading
 
+def _fault():
+    time.sleep(30)
+    print("[DEMO] Arret volontaire", flush=True)
+    os._exit(1)
+
+threading.Thread(target=_fault, daemon=True).start()
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
